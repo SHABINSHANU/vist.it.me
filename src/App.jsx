@@ -10,6 +10,7 @@ import { ParticlesBackground } from "./components/ParticlesBackground";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
       >
         <p> </p>
       </motion.footer>
+      <ScrollToTop />
     </div>
   );
 }

@@ -129,7 +129,14 @@ export const Contact = () => {
             whileTap={{ scale: 0.95 }}
             disabled={formStatus.submitting}
           >
-            {formStatus.submitting ? "Sending..." : "Send Message"}
+            {formStatus.submitting ? (
+              <div className="btn-loader">
+                <span className="spinner"></span>
+                <span>Sending...</span>
+              </div>
+            ) : (
+              "Send Message"
+            )}
           </motion.button>
 
           {formStatus.message && (

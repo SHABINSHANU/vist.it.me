@@ -13,21 +13,31 @@ export const ParticlesBackground = () => {
     });
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const options = {
     background: {
       color: {
         value: "transparent",
       },
     },
-    fpsLimit: 120,
+    fpsLimit: isMobile ? 60 : 120,
     interactivity: {
       events: {
         onClick: {
-          enable: true,
+          enable: !isMobile,
           mode: "push",
         },
         onHover: {
-          enable: true,
+          enable: !isMobile,
           mode: "grab",
         },
         resize: true,
@@ -52,7 +62,7 @@ export const ParticlesBackground = () => {
         color: "#a5f3fc", // cyan-200
         distance: 150,
         enable: true,
-        opacity: 0.3,
+        opacity: isMobile ? 0.2 : 0.3,
         width: 1,
       },
       move: {
@@ -62,7 +72,7 @@ export const ParticlesBackground = () => {
           default: "bounce",
         },
         random: false,
-        speed: 1.2,
+        speed: isMobile ? 0.8 : 1.2,
         straight: false,
       },
       number: {
@@ -70,16 +80,16 @@ export const ParticlesBackground = () => {
           enable: true,
           area: 800,
         },
-        value: 100,
+        value: isMobile ? 40 : 100,
       },
       opacity: {
-        value: 0.5,
+        value: isMobile ? 0.3 : 0.5,
       },
       shape: {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 4 },
+        value: isMobile ? { min: 1, max: 2 } : { min: 1, max: 4 },
       },
     },
     detectRetina: true,
