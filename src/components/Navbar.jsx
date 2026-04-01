@@ -64,10 +64,8 @@ export const Navbar = () => {
         <span className={`hamburger ${isOpen ? "active" : ""}`}></span>
       </button>
 
-      <motion.div
+      <div
         className={`nav-menu ${isOpen ? "active" : ""}`}
-        variants={floatingAnimation}
-        animate="animate"
       >
         <motion.ul
           className="nav-links"
@@ -138,7 +136,7 @@ export const Navbar = () => {
             > Contact</motion.a>
           </motion.li>
         </motion.ul>
-      </motion.div>
+      </div>
     </motion.nav>
   );
 };
