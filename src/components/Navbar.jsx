@@ -56,8 +56,8 @@ export const Navbar = () => {
       >
       </motion.div>
 
-      <button 
-        className="nav-toggle" 
+      <button
+        className="nav-toggle"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
