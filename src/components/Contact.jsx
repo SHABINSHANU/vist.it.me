@@ -49,6 +49,20 @@ export const Contact = () => {
     });
 
     try {
+      // 1. Save data to our Express Backend
+      const res = await fetch("http://127.0.0.1:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to save to database");
+      }
+
+      // 2. Original WhatsApp functionality
       const whatsappNumber = "917293334322";
       const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
       const encodedMessage = encodeURIComponent(messageText);
@@ -60,7 +74,7 @@ export const Contact = () => {
         submitting: false,
         success: true,
         error: false,
-        message: "Redirecting to WhatsApp...",
+        message: "Transmitted successfully! Redirecting to WhatsApp...",
       });
 
       setFormData({
@@ -73,7 +87,7 @@ export const Contact = () => {
         submitting: false,
         success: false,
         error: true,
-        message: "Failed to launch WhatsApp. Please try again.",
+        message: "Failed to submit message. Ensure backend is running.",
       });
     }
   };

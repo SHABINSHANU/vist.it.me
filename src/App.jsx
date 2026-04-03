@@ -10,15 +10,11 @@ import { ParticlesBackground } from "./components/ParticlesBackground";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AdminLogin } from "./pages/AdminLogin";
+import { AdminDashboard } from "./pages/AdminDashboard";
 
-function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-  }, []);
-
+function PortfolioView({ isLoaded }) {
   return (
     <div className={`app ${isLoaded ? "loaded" : ""}`}>
       <ParticlesBackground />
@@ -40,6 +36,25 @@ function App() {
         <p> </p>
       </motion.footer>
     </div>
+  );
+}
+
+function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  }, []);
+
+  return (
+    <Router basename="/vist.it.me">
+      <Routes>
+        <Route path="/" element={<PortfolioView isLoaded={isLoaded} />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

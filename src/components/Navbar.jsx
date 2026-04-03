@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -134,6 +135,22 @@ export const Navbar = () => {
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
             > Contact</motion.a>
+          </motion.li>
+
+          <motion.li
+            variants={fadeInUp}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              to="/admin/login"
+              onClick={() => setIsOpen(false)}
+              style={{ 
+                color: 'inherit', 
+                textDecoration: 'none',
+                display: 'inline-block'
+              }}
+            > Admin</Link>
           </motion.li>
         </motion.ul>
       </div>
