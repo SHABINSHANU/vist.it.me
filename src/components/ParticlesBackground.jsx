@@ -72,7 +72,7 @@ export const ParticlesBackground = () => {
           enable: true,
           area: 800,
         },
-        value: isMobile ? 40 : 100,
+        value: isMobile ? 30 : 50,
       },
       opacity: {
         value: isMobile ? 0.3 : 0.5,

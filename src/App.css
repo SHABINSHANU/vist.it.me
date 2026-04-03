@@ -91,7 +91,8 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding: 1.5rem 5%;
-  background: transparent;
+  background: rgba(2, 6, 23, 0.8) !important;
+  backdrop-filter: blur(10px);
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -130,7 +131,7 @@ body {
   list-style: none;
 }
 
-.nav-links a {
+.nav-links a, .nav-links .admin-nav-link {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
@@ -139,8 +140,8 @@ body {
   cursor: pointer;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover, .nav-links .admin-nav-link:hover {
+  color: var(--accent-color);
 }
 
 .nav-toggle {

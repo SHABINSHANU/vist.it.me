@@ -144,12 +144,8 @@ export const Navbar = () => {
           >
             <Link
               to="/admin/login"
+              className="admin-nav-link"
               onClick={() => setIsOpen(false)}
-              style={{ 
-                color: 'inherit', 
-                textDecoration: 'none',
-                display: 'inline-block'
-              }}
             > Admin</Link>
           </motion.li>
         </motion.ul>
