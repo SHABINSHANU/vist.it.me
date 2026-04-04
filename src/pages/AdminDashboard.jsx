@@ -17,7 +17,7 @@ export const AdminDashboard = () => {
       }
 
       try {
-        const res = await fetch("http://127.0.0.1:5000/api/admin/contacts", {
+        const res = await fetch("http://localhost:5000/api/admin/contacts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -50,7 +50,7 @@ export const AdminDashboard = () => {
 
     const token = localStorage.getItem("adminToken");
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/admin/contact/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/admin/contact/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

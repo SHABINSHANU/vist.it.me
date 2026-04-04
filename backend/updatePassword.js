@@ -13,7 +13,7 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 const NEW_PASSWORD = 'shabin'; // <-- CHANGE THIS TO YOUR NEW PASSWORD
 const ADMIN_EMAIL = 'shabinshanu0@gmail.com';
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/portfolio_db')
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio_db')
   .then(async () => {
     console.log('Connected to MongoDB');
     

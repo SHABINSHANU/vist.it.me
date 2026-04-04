@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.join(__dirname, '.env') });
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/portfolio_db')
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio_db')
   .then(async () => {
     console.log('Connected to MongoDB');
     
