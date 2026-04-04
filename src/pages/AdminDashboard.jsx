@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "./Admin.css";
+import { API_ENDPOINTS } from "../api/config";
 
 export const AdminDashboard = () => {
   const [messages, setMessages] = useState([]);
@@ -17,7 +18,7 @@ export const AdminDashboard = () => {
       }
 
       try {
-        const res = await fetch("http://127.0.0.1:5000/api/admin/contacts", {
+        const res = await fetch(API_ENDPOINTS.ADMIN_CONTACTS, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -50,7 +51,7 @@ export const AdminDashboard = () => {
 
     const token = localStorage.getItem("adminToken");
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/admin/contact/${id}`, {
+      const res = await fetch(API_ENDPOINTS.ADMIN_CONTACT_DELETE(id), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

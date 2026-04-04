@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { API_ENDPOINTS } from "../api/config";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -50,7 +51,7 @@ export const Contact = () => {
 
     try {
       // 1. Save data to our Express Backend
-      const res = await fetch("http://127.0.0.1:5000/api/contact", {
+      const res = await fetch(API_ENDPOINTS.CONTACT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
