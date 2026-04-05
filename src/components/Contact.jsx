@@ -56,7 +56,8 @@ export const Contact = () => {
       const encodedMessage = encodeURIComponent(messageText);
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-      window.open(whatsappURL, "_blank");
+      // Use assign to ensure reliable redirection on mobile browsers rather than window.open
+      window.location.assign(whatsappURL);
 
       // 2. Save data to our Express Backend
       const res = await fetch(API_ENDPOINTS.CONTACT, {
