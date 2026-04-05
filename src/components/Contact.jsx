@@ -50,7 +50,15 @@ export const Contact = () => {
     });
 
     try {
-      // 1. Save data to our Express Backend
+      // 1. Open WhatsApp directly in parallel to avoid popup blockers
+      const whatsappNumber = "917293334322";
+      const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
+      const encodedMessage = encodeURIComponent(messageText);
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+      window.open(whatsappURL, "_blank");
+
+      // 2. Save data to our Express Backend
       const res = await fetch(API_ENDPOINTS.CONTACT, {
         method: "POST",
         headers: {
@@ -63,19 +71,11 @@ export const Contact = () => {
         throw new Error("Failed to save to database");
       }
 
-      // 2. Original WhatsApp functionality
-      const whatsappNumber = "917293334322";
-      const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
-      const encodedMessage = encodeURIComponent(messageText);
-      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-      window.open(whatsappURL, "_blank");
-
       setFormStatus({
         submitting: false,
         success: true,
         error: false,
-        message: "Transmitted successfully! Redirecting to WhatsApp...",
+        message: "Message transmitted successfully & opened in WhatsApp!",
       });
 
       setFormData({
@@ -84,11 +84,12 @@ export const Contact = () => {
         message: "",
       });
     } catch (error) {
+      console.error(error);
       setFormStatus({
         submitting: false,
         success: false,
         error: true,
-        message: "Failed to submit message. Ensure backend is running.",
+        message: "Message redirected to WhatsApp, but failed to save to Admin Panel.",
       });
     }
   };
@@ -156,9 +157,8 @@ export const Contact = () => {
 
           {formStatus.message && (
             <motion.div
-              className={`form-status ${
-                formStatus.success ? "success" : "error"
-              } `}
+              className={`form-status ${formStatus.success ? "success" : "error"
+                } `}
             >
               {formStatus.message}
             </motion.div>
