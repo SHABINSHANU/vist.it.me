@@ -51,13 +51,13 @@ export const Contact = () => {
 
     try {
       // 1. Redirect directly to WhatsApp
-      const whatsappNumber = "917293334322";
+      const whatsappNumber = "7293334322"; // Exactly the number requested
       const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
       const encodedMessage = encodeURIComponent(messageText);
-      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
-      // Use assign to ensure reliable redirection on mobile browsers rather than window.open
-      window.location.assign(whatsappURL);
+      // Open strictly in a new tab so they don't lose the portfolio page
+      window.open(whatsappURL, "_blank");
 
       setFormStatus({
         submitting: false,
