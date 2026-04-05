@@ -50,7 +50,7 @@ export const Contact = () => {
     });
 
     try {
-      // 1. Open WhatsApp directly in parallel to avoid popup blockers
+      // 1. Redirect directly to WhatsApp
       const whatsappNumber = "917293334322";
       const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
       const encodedMessage = encodeURIComponent(messageText);
@@ -59,24 +59,11 @@ export const Contact = () => {
       // Use assign to ensure reliable redirection on mobile browsers rather than window.open
       window.location.assign(whatsappURL);
 
-      // 2. Save data to our Express Backend
-      const res = await fetch(API_ENDPOINTS.CONTACT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to save to database");
-      }
-
       setFormStatus({
         submitting: false,
         success: true,
         error: false,
-        message: "Message transmitted successfully & opened in WhatsApp!",
+        message: "Redirecting to WhatsApp!",
       });
 
       setFormData({
@@ -90,7 +77,7 @@ export const Contact = () => {
         submitting: false,
         success: false,
         error: true,
-        message: "Message redirected to WhatsApp, but failed to save to Admin Panel.",
+        message: "Failed to open WhatsApp.",
       });
     }
   };
