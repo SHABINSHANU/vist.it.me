@@ -11,8 +11,6 @@ import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AdminLogin } from "./pages/AdminLogin";
-import { AdminDashboard } from "./pages/AdminDashboard";
 
 function PortfolioView({ isLoaded }) {
   return (
@@ -51,8 +49,6 @@ function App() {
     <Router basename="/vist.it.me">
       <Routes>
         <Route path="/" element={<PortfolioView isLoaded={isLoaded} />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );

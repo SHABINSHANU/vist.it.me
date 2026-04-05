@@ -51,10 +51,10 @@ export const Contact = () => {
 
     try {
       // 1. Redirect directly to WhatsApp
-      const whatsappNumber = "7293334322"; // Exactly the number requested
+      const whatsappNumber = "917293334322"; // Country Code (91) is required by WhatsApp API!
       const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
       const encodedMessage = encodeURIComponent(messageText);
-      const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
       // Use window.location.href to guarantee no popup blocker can stop it
       window.location.href = whatsappURL;
