@@ -56,8 +56,8 @@ export const Contact = () => {
       const encodedMessage = encodeURIComponent(messageText);
       const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
-      // Open strictly in a new tab so they don't lose the portfolio page
-      window.open(whatsappURL, "_blank");
+      // Use window.location.href to guarantee no popup blocker can stop it
+      window.location.href = whatsappURL;
 
       setFormStatus({
         submitting: false,
