@@ -56,8 +56,8 @@ export const Contact = () => {
       const encodedMessage = encodeURIComponent(messageText);
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-      // Use window.location.href to guarantee no popup blocker can stop it
-      window.location.href = whatsappURL;
+      // Execute redirect with window.open
+      window.open(whatsappURL, "_blank");
 
       setFormStatus({
         submitting: false,

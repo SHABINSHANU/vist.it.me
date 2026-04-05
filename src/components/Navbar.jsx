@@ -136,18 +136,6 @@ export const Navbar = () => {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
             > Contact</motion.a>
           </motion.li>
-
-          <motion.li
-            variants={fadeInUp}
-            whileHover={{ scale: 1.1, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              to="/admin/login"
-              className="admin-nav-link"
-              onClick={() => setIsOpen(false)}
-            > Admin</Link>
-          </motion.li>
         </motion.ul>
       </div>
     </motion.nav>
