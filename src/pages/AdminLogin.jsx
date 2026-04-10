@@ -43,7 +43,7 @@ export const AdminLogin = () => {
         {error && <div className="admin-error">{error}</div>}
         <form onSubmit={handleLogin} className="admin-form">
           <input
-            type="email"
+            type="text"
             placeholder="Admin Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
