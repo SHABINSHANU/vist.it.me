@@ -27,7 +27,7 @@ export const AdminLogin = () => {
         setError(data.message || "Login failed");
       }
     } catch (err) {
-      setError("Server error. Ensure backend is running.");
+      setError("Cannot reach backend API. If hosted on GitHub pages, ensure you have deployed a backend (e.g. Render) and updated API config.");
     }
   };
 

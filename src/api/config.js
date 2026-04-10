@@ -5,7 +5,8 @@ const isProduction = import.meta.env.MODE === 'production';
 
 // When you deploy to Render, you will get a URL like https://your-app-name.onrender.com
 // This will be set in your Environment Variables on Render as VITE_API_BASE_URL
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (isLocalhost ? "http://127.0.0.1:5000" : "https://portfolio-backend-insert-id-here.onrender.com");
 
 export const API_ENDPOINTS = {
   LOGIN: `${API_BASE_URL}/api/login`,
