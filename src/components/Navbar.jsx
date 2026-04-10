@@ -136,6 +136,33 @@ export const Navbar = () => {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
             > Contact</motion.a>
           </motion.li>
+
+          <motion.li
+            variants={fadeInUp}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              to="/admin/login"
+              onClick={() => setIsOpen(false)}
+              style={{
+                display: 'block',
+                textDecoration: 'none',
+                color: 'var(--text-color)',
+                fontSize: 'var(--font-size-nav)',
+                fontWeight: '600',
+                transition: 'color 0.3s ease',
+              }}
+            >
+              <motion.span
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+                style={{ display: 'inline-block' }}
+              >
+                Admin
+              </motion.span>
+            </Link>
+          </motion.li>
         </motion.ul>
       </div>
     </motion.nav>

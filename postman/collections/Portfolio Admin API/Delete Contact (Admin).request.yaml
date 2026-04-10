@@ -1,0 +1,9 @@
+$kind: http-request
+url: http://127.0.0.1:5000/api/admin/contact/CONTACT_ID_HERE
+method: DELETE
+headers:
+  - key: Authorization
+    value: Bearer YOUR_TOKEN_HERE
+    description: Replace YOUR_TOKEN_HERE with the token received from the Admin
+      Login endpoint.
+order: 4000

@@ -50,20 +50,24 @@ export const Contact = () => {
     });
 
     try {
-      // 1. Redirect directly to WhatsApp
-      const whatsappNumber = "917293334322"; // Country Code (91) is required by WhatsApp API!
-      const messageText = `*New Contact Request from Portfolio*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Message:*\n${formData.message}`;
-      const encodedMessage = encodeURIComponent(messageText);
-      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      // 1. Save data to the backend API
+      const res = await fetch(API_ENDPOINTS.CONTACT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Execute redirect with window.open
-      window.open(whatsappURL, "_blank");
+      if (!res.ok) {
+        throw new Error("Failed to save message to backend.");
+      }
 
       setFormStatus({
         submitting: false,
         success: true,
         error: false,
-        message: "Redirecting to WhatsApp!",
+        message: "Message Sent Successfully!",
       });
 
       setFormData({
@@ -77,7 +81,7 @@ export const Contact = () => {
         submitting: false,
         success: false,
         error: true,
-        message: "Failed to open WhatsApp.",
+        message: "Failed to send message. Please try again.",
       });
     }
   };

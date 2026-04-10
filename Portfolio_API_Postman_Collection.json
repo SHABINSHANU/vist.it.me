@@ -1,0 +1,134 @@
+{
+	"info": {
+		"name": "Portfolio Admin API",
+		"description": "API endpoints for testing the Portfolio Admin panel and Contact functionality.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"shabinshanu0@gmail.com\",\n    \"password\": \"shabin\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Contact Form",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"message\": \"Hello, this is a test message sent from Postman!\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/contact",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Contacts (Admin)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE",
+						"description": "Replace YOUR_TOKEN_HERE with the token received from the Admin Login endpoint."
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/admin/contacts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"admin",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact (Admin)",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR_TOKEN_HERE",
+						"description": "Replace YOUR_TOKEN_HERE with the token received from the Admin Login endpoint."
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/admin/contact/CONTACT_ID_HERE",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"admin",
+						"contact",
+						"CONTACT_ID_HERE"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

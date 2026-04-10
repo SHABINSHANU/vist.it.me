@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://127.0.0.1:5000/api/contact
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Hello, this is a test message sent from Postman!"
+    }
+order: 2000

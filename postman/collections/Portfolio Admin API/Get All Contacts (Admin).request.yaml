@@ -1,0 +1,9 @@
+$kind: http-request
+url: http://127.0.0.1:5000/api/admin/contacts
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer YOUR_TOKEN_HERE
+    description: Replace YOUR_TOKEN_HERE with the token received from the Admin
+      Login endpoint.
+order: 3000
